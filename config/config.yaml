@@ -1,0 +1,39 @@
+data_ingestion:
+  bucket_name: "ml_hotel_cancellation_bucket001"
+  bucket_file_name: "Hotel_Reservations.csv"
+  train_test_ratio: 0.8
+  
+data_processing:
+  categorical_features:
+    - "type_of_meal_plan"
+    - "room_type_reserved"
+    - "market_segment_type"
+    - "booking_status"
+  numerical_features:
+    - "no_of_adults"
+    - "no_of_adults"
+    - "no_of_weekend_nights"
+    - "no_of_week_nights"
+    - "required_car_parking_space"
+    - "lead_time"
+    - "arrival_year"
+    - "arrival_month"
+    - "arrival_date"
+    - "repeated_guest"
+    - "no_of_previous_cancellations"
+    - "no_of_previous_bookings_not_canceled"
+    - "avg_price_per_room"
+    - "no_of_special_requests"
+  target: "booking_status"
+  skew_threshold: 5
+  class_imbalance_threshold: 0.4
+  num_of_selected_features: 10
+  # drop_features:
+  #   - "reservation_status"
+  #   - "reservation_status_date"
+  #   - "arrival_date"
+  #   - "days_in_waiting_list"
+  #   - "previous_cancellations"
+  #   - "previous_bookings_not_canceled"
+  #   - "number_of_special_requests"
+  #   - "total_of_special_requests"
