@@ -70,7 +70,5 @@ class DataIngestion:
 if __name__=="__main__":
     config = read_yaml(CONFIG_PATH)
     print("Loaded config:", config)  # Debug line
-
     Data_ingestion = DataIngestion(read_yaml(CONFIG_PATH))
-
     Data_ingestion.run()
