@@ -1,3 +1,5 @@
+## This dockerfile is for the jenkins docker img/container (Dockerfile for the proj container is in ../)
+
 #Use jenkins image as base image
 FROM jenkins/jenkins:lts
 
@@ -23,5 +25,3 @@ VOLUME /var/lib/docker
 
 # Switch back to jenkins user
 USER jenkins
-
-
