@@ -20,12 +20,8 @@ pipeline{
                 script{
                     echo 'Setting up venv.....'
                     sh '''
-                    apt-get update
-                    apt-get install -y python3-venv
-
-                    python3 -m venv ${VENV_DIR}
-                    . ${VENV_DIR}/bin/activate
-
+                    python -m venv ${VENV_DIR}
+                    source ${VENV_DIR}/bin/activate
                     pip install --upgrade pip
                     pip install -e .
                     '''
