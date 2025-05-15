@@ -1,0 +1,79 @@
+.
+├── application.py
+├── artifacts
+│   ├── models
+│   │   └── lgbm_model.pkl
+│   ├── processed
+│   │   ├── processed_test.csv
+│   │   └── processed_train.csv
+│   └── raw
+│       ├── raw.csv
+│       ├── test.csv
+│       └── train.csv
+├── config
+│   ├── config.yaml
+│   ├── __init__.py
+│   ├── model_params.py
+│   ├── paths_config.py
+│   └── __pycache__
+│       ├── __init__.cpython-312.pyc
+│       ├── model_params.cpython-312.pyc
+│       └── paths_config.cpython-312.pyc
+├── custom_jenkins
+│   └── Dockerfile
+├── Dockerfile
+├── Hotel_Cancellation_MLOps1.egg-info
+│   ├── dependency_links.txt
+│   ├── PKG-INFO
+│   ├── requires.txt
+│   ├── SOURCES.txt
+│   └── top_level.txt
+├── Hotel Reservations.csv
+├── Jenkinsfile
+├── Local_notes
+│   └── docker_cmd.md
+├── logs
+│   ├── logs_2025-05-09.log
+│   ├── logs_2025-05-10.log
+│   └── logs_2025-05-12.log
+├── mlruns
+│   ├── 0
+│   │   ├── 546968ccc40a45b7ba201d0a064ed283
+│   │   ├── 6d879cf6daf64f20b1dd0a8b3abd5d8d
+│   │   ├── dd0a9dda89f74273b48f05a289d355bd
+│   │   └── meta.yaml
+│   └── models
+├── notebooks
+│   └── nb.ipynb
+├── pipeline
+│   ├── __init__.py
+│   └── training_pipeline.py
+├── requirements.txt
+├── setup.py
+├── src
+│   ├── custom_exception.py
+│   ├── data_injestion.py
+│   ├── data_preprocessing.py
+│   ├── __init__.py
+│   ├── logger.py
+│   ├── model_training.py
+│   └── __pycache__
+│       ├── custom_exception.cpython-312.pyc
+│       ├── data_injestion.cpython-312.pyc
+│       ├── data_preprocessing.cpython-312.pyc
+│       ├── __init__.cpython-312.pyc
+│       ├── logger.cpython-312.pyc
+│       └── model_training.cpython-312.pyc
+├── static
+│   └── style.css
+├── templates
+│   └── index.html
+├── tree.txt
+└── utils
+    ├── common_functions.py
+    ├── __init__.py
+    └── __pycache__
+        ├── common_functions.cpython-312.pyc
+        └── __init__.cpython-312.pyc
+
+25 directories, 52 files

@@ -7,6 +7,6 @@ scipy
 matplotlib
 seaborn
 imbalanced-learn
-lightbgm
+lightgbm
 mlflow
 flask
