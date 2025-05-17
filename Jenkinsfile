@@ -14,6 +14,19 @@ pipeline {
                 }
             }
         }
+        stage('Start Docker Daemon') {
+            steps {
+                script {
+                    echo 'Starting Docker daemon for DinD.....'
+                    sh '''
+                    if ! pgrep dockerd > /dev/null; then
+                        sudo dockerd &
+                        sleep 5
+                    fi
+                    '''
+                }
+            }
+        }
         stage('Setting up virtual env and Installing dependency') {
             steps {
                 script {
@@ -37,8 +50,33 @@ pipeline {
                         gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS}
                         gcloud config set project ${GCP_PROJECT}
                         gcloud auth configure-docker --quiet
+                        docker pull python:3.11 || true
                         docker build -t gcr.io/${GCP_PROJECT}/hotel-ml-project:latest .
-                        docker push gcr.io/${GCP_PROJECT}/hotel-ml-project:latest
+                        # Add timeout and verbose output for docker push
+                        timeout 300 docker push --verbose gcr.io/${GCP_PROJECT}/hotel-ml-project:latest
+                        '''
+                    }
+                }
+            }
+        }
+        stage('Deploy to Google Cloud Run'){
+            steps{
+                withCredentials([file(credentialsId: 'gcp-key' , variable : 'GOOGLE_APPLICATION_CREDENTIALS')]){
+                    script{
+                        echo 'Deploy to Google Cloud Run.............'
+                        sh '''
+                        export PATH=$PATH:${GCLOUD_PATH}
+
+
+                        gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS}
+
+                        gcloud config set project ${GCP_PROJECT}
+
+                        gcloud run deploy hotel-ml-project \
+                            --image=gcr.io/${GCP_PROJECT}/hotel-ml-project:latest \
+                            --platform=managed \
+                            --region=us-central1 \
+                            --allow-unauthenticated 
                         '''
                     }
                 }
