@@ -52,8 +52,7 @@ pipeline {
                         gcloud auth configure-docker --quiet
                         docker pull python:3.11 || true
                         docker build -t gcr.io/${GCP_PROJECT}/hotel-ml-project:latest .
-                        # Add timeout and verbose output for docker push
-                        timeout 300 docker push --verbose gcr.io/${GCP_PROJECT}/hotel-ml-project:latest
+                        timeout 300 docker push gcr.io/${GCP_PROJECT}/hotel-ml-project:latest
                         '''
                     }
                 }
