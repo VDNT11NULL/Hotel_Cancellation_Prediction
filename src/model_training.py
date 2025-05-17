@@ -41,40 +41,42 @@ class ModelTraining:
         except Exception as e:
             logger.error(f"Error at load and split {e}")
             raise CustomException("Failed at load and split stage", e)
+def train_lgbm(self, X_train, Y_train):
+    try:
+        logger.info("Started LGBM model training")
+        lgbm_model = lgbm.LGBMClassifier(random_state=self.random_search_params["random_state"])
+        logger.info("Starting HP Tuning")
+
+        # Optimized params
+        self.random_search_params["n_iter"] = 5  # Fewer iterations
+        self.random_search_params["cv"] = 3      # Fewer folds
+        self.random_search_params["n_jobs"] = 2  # Limit parallelism
+
+        random_search = RandomizedSearchCV(
+            estimator=lgbm_model,
+            param_distributions=self.params_dict,
+            n_iter=self.random_search_params["n_iter"],
+            cv=self.random_search_params["cv"],
+            n_jobs=self.random_search_params["n_jobs"],
+            verbose=self.random_search_params["verbose"],
+            scoring=self.random_search_params["scoring"]
+        )
+
+        logger.info("Starting our Model Training")
+        random_search.fit(X_train, Y_train)
+
+        logger.info("Hyperparameter Tuning Completed")
+
+        best_params = random_search.best_params_
+        best_lgbm_model = random_search.best_estimator_
+
+        logger.info(f"Best params are: {best_params}")
+        return best_lgbm_model
         
-    def train_lgbm(self, X_train, Y_train):
-        try:
-            logger.info("Started LGBM model training")
-            lgbm_model = lgbm.LGBMClassifier(random_state=self.random_search_params["random_state"])
-            logger.info("Starting HP Tuning")
-
-            random_search = RandomizedSearchCV(
-                estimator=lgbm_model,
-                param_distributions=self.params_dict,
-                n_iter = self.random_search_params["n_iter"],
-                cv = self.random_search_params["cv"],
-                n_jobs= self.random_search_params["n_jobs"],
-                verbose = self.random_search_params["verbose"],
-                scoring = self.random_search_params["scoring"]
-            )
-
-            logger.info("Starting our Model Training")
-
-            random_search.fit(X_train, Y_train)
-
-            logger.info("Hyperparamter Tuning Completed")
-
-            best_params = random_search.best_params_
-            best_lgbm_model = random_search.best_estimator_
-
-            logger.info(f"Best params are: {best_params}")
-
-            return best_lgbm_model
-        
-        except Exception as e:
-            logger.error(f"Error at training stage: {e}")
-            raise CustomException("Failed at Training fn", e)
-
+    except Exception as e:
+        logger.error(f"Error at training stage: {e}")
+        raise CustomException("Failed at Training fn", e)
+    
     def eval_model(self, model, X_test, Y_test):
         try:
             logger.info("Evaluating the model")
