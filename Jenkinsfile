@@ -77,7 +77,7 @@ pipeline {
         }
         stage('Deploy to Google Cloud Run'){
             steps{
-                withCredentials([file(credentialsId: 'gcp-key' , variable : 'GOOGLE_APPLICATION_CREDENTIALS')]){
+                withCredentials([file(credentialsId: 'gcp_hotel_pre_ML' , variable : 'GOOGLE_APPLICATION_CREDENTIALS')]){
                     script{
                         echo 'Deploy to Google Cloud Run.............'
                         sh '''
