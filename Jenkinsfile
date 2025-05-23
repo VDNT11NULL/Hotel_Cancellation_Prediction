@@ -6,6 +6,13 @@ pipeline {
         GCLOUD_PATH = "/var/jenkins_home/google-cloud-sdk/bin"
     }
     stages {
+        stage('Check Dir') {
+            steps {
+                sh 'pwd'
+                sh 'ls -la'
+                sh 'git status || echo "Not in a git repo"'
+            }
+        }
         stage('Cloning Github repo to Jenkins') {
             steps {
                 script {
