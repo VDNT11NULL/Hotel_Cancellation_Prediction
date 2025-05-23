@@ -11,7 +11,7 @@ This project delivers a comprehensive, production-grade MLOps solution designed 
 ![Deployed App Screenshot](assets/deployed-app-screenshot.png)
 
 ### Complete ML Training Pipeline
-![Training Pipeline Screenshot](assets/training-pipeline-screenshot.png)
+![Training Pipeline Screenshot](assets/training-pipeline-screenshot11.png)
 
 ## 🏗️ Architecture Overview
 
