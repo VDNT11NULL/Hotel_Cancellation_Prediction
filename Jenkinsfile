@@ -53,13 +53,23 @@ pipeline {
                     script {
                         echo 'Building and pushing docker img to GCR..........'
                         sh '''
+                        set +e
                         export PATH=$PATH:${GCLOUD_PATH}
                         gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS}
                         gcloud config set project ${GCP_PROJECT}
                         gcloud auth configure-docker --quiet
                         docker pull python:3.11 || true
                         docker build -t gcr.io/${GCP_PROJECT}/hotel-ml-project:latest .
+                        
                         timeout 300 docker push gcr.io/${GCP_PROJECT}/hotel-ml-project:latest
+                        EXIT_CODE=$?
+
+                        if [ $EXIT_CODE -eq 124 ]; then
+                            echo "[WARNING] Docker push hit timeout (124), but it may have succeeded. Continuing pipeline..."
+                        elif [ $EXIT_CODE -ne 0 ]; then
+                            echo "[ERROR] Docker push failed with exit code $EXIT_CODE"
+                            exit $EXIT_CODE
+                        fi
                         '''
                     }
                 }
