@@ -61,7 +61,7 @@ pipeline {
                         docker pull python:3.11 || true
                         docker build -t gcr.io/${GCP_PROJECT}/hotel-ml-project:latest .
                         
-                        timeout 300 docker push gcr.io/${GCP_PROJECT}/hotel-ml-project:latest
+                        timeout 60 docker push gcr.io/${GCP_PROJECT}/hotel-ml-project:latest
                         EXIT_CODE=$?
 
                         if [ $EXIT_CODE -eq 124 ]; then
