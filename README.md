@@ -2,6 +2,7 @@
 
 This project delivers a comprehensive, production-grade MLOps solution designed to predict hotel booking cancellations with high accuracy, leveraging the power of the LightGBM gradient boosting framework. It integrates a fully automated end-to-end machine learning pipeline that seamlessly orchestrates data ingestion, preprocessing, model training, evaluation, and deployment. The MLOps architecture emphasizes continuous integration and continuous deployment (CI/CD) through automated pipelines built with Jenkins, ensuring rapid and reliable updates to the model and application. Containerization with Docker guarantees consistent environments across development, testing, and production, while serverless deployment on Google Cloud Platform (GCP)—specifically using Google Container Registry (GCR) for image storage and Google Cloud Run for scalable hosting—enables effortless scalability and accessibility. This project not only focuses on predictive performance but also on operational excellence, making it a robust, reproducible, and maintainable system for real-world deployment scenarios.
 ## 🌐 Live Application
+
 **Deployed App**: [https://hotel-ml-project-187943878672.us-central1.run.app/](https://hotel-ml-project-187943878672.us-central1.run.app/)
 
 ## 📸 Project Screenshots
