@@ -20,7 +20,12 @@
 │       ├── model_params.cpython-312.pyc
 │       └── paths_config.cpython-312.pyc
 ├── custom_jenkins
-│   └── Dockerfile
+│   ├── artifacts
+│   │   ├── processed
+│   │   └── raw
+│   ├── Dockerfile
+│   └── logs
+│       └── logs_2025-05-17.log
 ├── Dockerfile
 ├── Hotel_Cancellation_MLOps1.egg-info
 │   ├── dependency_links.txt
@@ -31,15 +36,44 @@
 ├── Hotel Reservations.csv
 ├── Jenkinsfile
 ├── Local_notes
-│   └── docker_cmd.md
+│   ├── 4_gcr_repo_jenkins_cloud_cred_auth.md
+│   ├── ALL+MATERIALS+-+1.zip
+│   ├── Blogs
+│   │   └── lightweight_checkout.md
+│   ├── CI-CD Deployment Materials
+│   │   ├── STEPS FOR CI-CD Deployment on Jenkins.txt
+│   │   └── STEPS.md
+│   ├── DATASET
+│   │   └── Hotel Reservations.csv
+│   ├── docker_cmd.md
+│   ├── Jenkinsfile.md
+│   ├── NOTES & WORKFLOW.pdf
+│   └── PROJECT CODE
+│       ├── application.py
+│       ├── artifacts
+│       ├── config
+│       ├── custom_jenkins
+│       ├── Dockerfile
+│       ├── Jenkinsfile
+│       ├── logs
+│       ├── notebook
+│       ├── pipeline
+│       ├── requirements.txt
+│       ├── setup.py
+│       ├── src
+│       ├── static
+│       ├── templates
+│       └── utils
 ├── logs
 │   ├── logs_2025-05-09.log
 │   ├── logs_2025-05-10.log
-│   └── logs_2025-05-12.log
+│   ├── logs_2025-05-12.log
+│   └── logs_2025-05-17.log
 ├── mlruns
 │   ├── 0
 │   │   ├── 546968ccc40a45b7ba201d0a064ed283
 │   │   ├── 6d879cf6daf64f20b1dd0a8b3abd5d8d
+│   │   ├── 73e5846b72624cc9b44072c0460185f2
 │   │   ├── dd0a9dda89f74273b48f05a289d355bd
 │   │   └── meta.yaml
 │   └── models
@@ -76,4 +110,4 @@
         ├── common_functions.cpython-312.pyc
         └── __init__.cpython-312.pyc
 
-25 directories, 52 files
+45 directories, 66 files
