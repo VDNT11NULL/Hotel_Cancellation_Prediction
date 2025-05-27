@@ -19,4 +19,5 @@ RUN python pipeline/training_pipeline.py
 
 EXPOSE 5000
 
+# Added a symlink for python --- python3 (venv and pip setup)
 CMD ["python", "application.py"]
