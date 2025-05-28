@@ -30,4 +30,5 @@ def index():
     return render_template('index.html', prediction=None)
 
 if __name__=='__main__':
+    # Need to update the schema for user i/o
     app.run(host='0.0.0.0', port=8080)
